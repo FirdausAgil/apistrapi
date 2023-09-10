@@ -1,0 +1,51 @@
+{
+  "kind": "collectionType",
+  "collectionName": "accounts",
+  "info": {
+    "singularName": "account",
+    "pluralName": "accounts",
+    "displayName": "Account"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "birtday": {
+      "type": "date",
+      "required": true
+    },
+    "bio": {
+      "type": "text",
+      "required": true,
+      "minLength": 10
+    },
+    "slug": {
+      "type": "string",
+      "regex": "^[^\\s]+$",
+      "unique": true,
+      "required": true
+    },
+    "profil": {
+      "allowedTypes": [
+        "files",
+        "videos",
+        "audios",
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "group": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::group.group",
+      "inversedBy": "accounts"
+    }
+  }
+}
